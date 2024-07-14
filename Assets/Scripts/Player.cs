@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rigid;
     private bool _isRunning;
     private Vector2 _direction;
+    private bool _isRolling;
 
     public Vector2 direction
     {
@@ -24,6 +25,12 @@ public class Player : MonoBehaviour
         set { _isRunning = value; }
     }
 
+    public bool isRolling
+    {
+        get { return _isRolling; }
+        set { _isRolling = value; }
+    }
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -34,6 +41,7 @@ public class Player : MonoBehaviour
     {
         onInput();
         onRun();
+        onRolling();
     }
 
     private void FixedUpdate()
@@ -65,6 +73,22 @@ public class Player : MonoBehaviour
         {
             speed = initialSpeed;
             _isRunning = false;
+        }
+    }
+
+    void onRolling()
+    {
+        //botão direito do mouse
+        if (Input.GetMouseButtonDown(1))
+        {
+            speed = runSpeed;
+            _isRolling = true;
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            speed = initialSpeed;
+            _isRolling = false;
         }
     }
 
