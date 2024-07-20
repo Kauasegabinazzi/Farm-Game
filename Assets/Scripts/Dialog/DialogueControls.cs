@@ -20,6 +20,14 @@ public class DialogueControls : MonoBehaviour
     private int index; // index sentencia
     private string[] sentence;
 
+    public static DialogueControls instance;
+
+    //awake é chamdo antes do start
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
