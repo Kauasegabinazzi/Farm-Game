@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class DialogueControls : MonoBehaviour
 {
+    [System.Serializable]
+    public enum idiom
+    {
+        portugues,
+        english,
+        spanish
+    }
+
+    public idiom linguage;
 
     [Header("Components")]
     public GameObject dialogueOb; // janela dialogo
@@ -52,7 +61,21 @@ public class DialogueControls : MonoBehaviour
     //pular para proxima fala
     public void NextSentence()
     {
-
+        if (speechText.text == sentence[index]) {
+            if (index < sentence.Length - 1) {
+                index++;
+                speechText.text = "";
+                StartCoroutine(TypeSentence());
+            }
+            else
+            {
+                speechText.text = "";
+                index = 0;
+                dialogueOb.SetActive(false);
+                sentence = null;
+                isShowing = false;
+            }
+        }
     }
 
     //chamar a fala do npc
