@@ -49,6 +49,10 @@ public class PlayerAnim : MonoBehaviour
         {
             transform.eulerAngles = new Vector2(0, 180);
         }
+        if (player.IsCutting == true)
+        {
+            anim.SetInteger("transition", 3);
+        }
     }
 
     void onRun()
@@ -57,10 +61,7 @@ public class PlayerAnim : MonoBehaviour
         {
             anim.SetInteger("transition", 2);
         }
-        else
-        {
-            anim.SetInteger("transition", 0);
-        }
+
     }
     #endregion
 }
