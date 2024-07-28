@@ -7,7 +7,8 @@ public class Tree : MonoBehaviour
 {
     [SerializeField] private float treeHealth;
     [SerializeField] private Animator anim;
-    // Start is called before the first frame update
+    [SerializeField] private GameObject woodPrefab;
+    [SerializeField] private int totalWood;
 
     public void OnHit()
     {
@@ -15,8 +16,13 @@ public class Tree : MonoBehaviour
 
         anim.SetTrigger("IsHit");
 
-        if(treeHealth <= 0)
+        if (treeHealth <= 0)
         {
+            for (int i = 0; i < totalWood; i++)
+            {
+                Instantiate(woodPrefab, transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0f), transform.rotation);
+            }
+
             //cria o toco e instancia os drops
             anim.SetTrigger("IsCut");
         }
