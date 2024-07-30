@@ -9,12 +9,14 @@ public class Tree : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject woodPrefab;
     [SerializeField] private int totalWood;
-
+    [SerializeField] private ParticleSystem leafs;
+    private bool isDead;
     public void OnHit()
     {
         treeHealth--;
 
         anim.SetTrigger("IsHit");
+        leafs.Play();
 
         if (treeHealth <= 0)
         {
@@ -25,12 +27,14 @@ public class Tree : MonoBehaviour
 
             //cria o toco e instancia os drops
             anim.SetTrigger("IsCut");
+
+            isDead = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("axe"))
+        if (collision.CompareTag("axe") && !isDead)
         {
             OnHit();
         }
