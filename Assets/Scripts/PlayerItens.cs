@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerItens : MonoBehaviour
 {
     [SerializeField] private int totalWood;
-    public int currentWater;
-    public int waterLimit;
+    public float currentWater;
+    public float waterLimit;
 
     public int TotalWood { get => totalWood; set => totalWood = value; }
 
