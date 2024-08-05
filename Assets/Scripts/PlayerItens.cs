@@ -7,6 +7,7 @@ public class PlayerItens : MonoBehaviour
     [SerializeField] private int totalWood;
     public float currentWater;
     public float waterLimit;
+    public int carrots;
 
     public int TotalWood { get => totalWood; set => totalWood = value; }
 
