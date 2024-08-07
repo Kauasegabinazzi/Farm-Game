@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
         set { _isWatering = value; }
     }
 
+    public int HandLingObj { get => handLingObj; set => handLingObj = value; }
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
